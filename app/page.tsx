@@ -63,7 +63,7 @@ export default function Home() {
 
   useEffect(() => {
     if (currentSol !== null) {
-      fetchImages(currentSol, 1)
+      fetchImages(currentSol, currentPage)
         .then((fetchedImages) => {
           const imagesToDisplay = fetchedImages.slice(0, 16);
           setImages(fetchedImages);
@@ -76,25 +76,6 @@ export default function Home() {
   console.log(images);
 
   const totalPhotosForCurrentSol = manifestPhotos.find(photo => photo.sol === currentSol)?.total_photos || 0;
-  
-  // Handle next and previous sol while keeping track of how many images are shown
-  const handleNextPage = () => {
-    setCurrentPage((old: number) => {
-      const newPage = old + 1;
-      const imagesOnNewPage = images.slice((newPage - 1) * 16, newPage * 16);
-      setDisplayedImages(imagesOnNewPage.length);
-      return newPage;
-    });
-  };
-
-  const handlePrevPage = () => {
-    setCurrentPage((old: number) => {
-      const newPage = Math.max(old - 1, 1);
-      const imagesOnNewPage = images.slice((newPage - 1) * 16, newPage * 16);
-      setDisplayedImages(imagesOnNewPage.length);
-      return newPage;
-    });
-  };
   
   return (
     <main className={styles.main}>
@@ -113,11 +94,11 @@ export default function Home() {
       </div>
 
       <div className={styles.pageButtons}>
-        <button className={styles.pageButtons_prev} onClick={handlePrevPage}>
+        <button className={styles.pageButtons_prev} onClick={() => setCurrentPage((old: number) => Math.max(old - 1, 1))}>
           Previous Page
         </button>
         <h3 className={styles.photoNumber}>{images.length} items of {totalPhotosForCurrentSol}</h3>
-        <button className={styles.pageButtons_next} onClick={handleNextPage}>
+        <button className={styles.pageButtons_next} onClick={() => setCurrentPage((old: number) => Math.max(old - 1, 1))}>
           Next Page
         </button>
       </div>
