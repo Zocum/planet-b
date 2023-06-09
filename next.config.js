@@ -4,7 +4,7 @@ const nextConfig = {
         NASA_API_KEY: process.env.NASA_API_KEY,
     },
     images: {
-        domains: ['mars.jpl.nasa.gov'],
+        domains: ['mars.jpl.nasa.gov', 'mars.nasa.gov'],
     },
 };
 

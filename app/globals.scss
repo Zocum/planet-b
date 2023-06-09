@@ -1,6 +1,6 @@
 :root {
   --max-width: 1100px;
-  --border-radius: 12px;
+  --border-radius: 5px;
   --font-mono: ui-monospace, Menlo, Monaco, 'Cascadia Mono', 'Segoe UI Mono',
     'Roboto Mono', 'Oxygen Mono', 'Ubuntu Monospace', 'Source Code Pro',
     'Fira Mono', 'Droid Sans Mono', 'Courier New', monospace;
@@ -8,6 +8,12 @@
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
+
+  --preferred-background: #000000;
+  --preferred-background-gradient: linear-gradient(to right, #434343, #000000);
+  // --preferred-background-gradient: -webkit-linear-gradient(to right, #434343, #000000);
+  
+
 
   --primary-glow: conic-gradient(
     from 180deg at 50% 50%,
@@ -36,8 +42,8 @@
 
   --callout-rgb: 238, 240, 241;
   --callout-border-rgb: 172, 175, 176;
-  --card-rgb: 180, 185, 188;
-  --card-border-rgb: 131, 134, 135;
+  --card-rgb: linear-gradient( 135deg, #FCCF31 10%, #F55555 100%);
+  --card-border-rgb: linear-gradient( 135deg, #FCCF31 10%, #F55555 100%);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -45,6 +51,9 @@
     --foreground-rgb: 255, 255, 255;
     --background-start-rgb: 0, 0, 0;
     --background-end-rgb: 0, 0, 0;
+    --preferred-background: rgb(2,0,36);
+    --preferred-background-gradient: linear-gradient(90deg, rgba(2,0,36,1) 0%,
+     rgba(112,9,121,1) 31%, rgba(0,212,255,1) 100%);
 
     --primary-glow: radial-gradient(rgba(1, 65, 255, 0.4), rgba(1, 65, 255, 0));
     --secondary-glow: linear-gradient(
@@ -86,13 +95,8 @@ body {
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  color: var(--preferred-background);
+  background: var(--preferred-background-gradient);
 }
 
 a {
