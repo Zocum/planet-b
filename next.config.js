@@ -1,4 +1,11 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {}
+const nextConfig = {
+    env: {
+        NASA_API_KEY: process.env.NASA_API_KEY,
+    },
+    images: {
+        domains: ['mars.jpl.nasa.gov'],
+    },
+};
 
 module.exports = nextConfig

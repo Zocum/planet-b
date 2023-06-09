@@ -1,95 +1,62 @@
-import Image from 'next/image'
-import styles from './page.module.css'
+'use client';
+import { useState, useEffect } from 'react';
+import Image from 'next/image';
+import styles from './page.module.scss';
+
+interface ImageData {
+  img_src: string;
+}
+
+async function fetchImages(sol: number, page: number): Promise<ImageData[]> {
+  const API_KEY = 'vTvXej37nbIqMhzi3GwjmXSi1IJpfLqeKl6r7zWa'; // Replace with your API key
+  const response = await fetch(`https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=${sol}&page=${page}&api_key=${API_KEY}`);
+  
+  if (!response.ok) {
+    throw new Error('Network response was not ok');
+  }
+
+  const data = await response.json();
+  return data.photos;
+}
 
 export default function Home() {
+  const [images, setImages] = useState<ImageData[]>([]);
+  const [currentSol, setCurrentSol] = useState(1);
+  const [currentPage, setCurrentPage] = useState(1);
+
+  useEffect(() => {
+    fetchImages(currentSol, currentPage).then(setImages).catch(console.error);
+  }, [currentSol, currentPage]);
+   console.log(images);
   return (
     <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>app/page.tsx</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
-
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
+      <h1 className={styles.title}>Mars Rover Images</h1>
+      <h2>Currently viewing Sol {currentSol}</h2>
 
       <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
+        {images.map((image, index) => (
+          <div key={index} className={styles.card}>
+            <Image src={image.img_src} alt="NASA Mars Rover Image" width={180} height={180} layout="responsive" />
+          </div>
+        ))}
+      </div>
 
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore the Next.js 13 playground.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
+      <div>
+        <button onClick={() => setCurrentSol((old) => Math.max(old - 1, 1))}>
+          Previous Sol
+        </button>
+        <button onClick={() => setCurrentSol((old) => old + 1)}>
+          Next Sol
+        </button>
+      </div>
+      <div>
+        <button onClick={() => setCurrentPage((old) => Math.max(old - 1, 1))}>
+          Previous Page
+        </button>
+        <button onClick={() => setCurrentPage((old) => old + 1)}>
+          Next Page
+        </button>
       </div>
     </main>
-  )
+  );
 }
