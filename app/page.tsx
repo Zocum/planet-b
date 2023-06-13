@@ -7,7 +7,12 @@ import MarsModal from './Modals/MarsModal/ModalMars';
 interface ImageData {
   img_src: string;
   status: string;
-  camera: string[];
+  camera: {
+    id: number;
+    name: string;
+    rover_id: number;
+    full_name: string;
+  };
   earth_date: string;
 }
 interface RoverManifest {
@@ -99,6 +104,10 @@ export default function Home() {
     setCurrentImageIndex(index);
   }
 
+  const bubbleStyles = {
+    fontWeight: '700',
+  }
+
   return (
     <main className={styles.main}>
       <h1 className={styles.title}>Mars Curiosity Images</h1>
@@ -144,9 +153,9 @@ export default function Home() {
             </button>
             {hoveredButton === index && (
               <div className={styles.bubbleText}>
-                <p>Infosiusdhfhbsdhfs</p>
-                <p>Infos</p>
-                <p>Infos</p>
+                <p><span style={bubbleStyles}>Earth date:</span> {image.earth_date}</p>
+                <p><span style={bubbleStyles}>Camera name:</span> {image.camera.name}</p>
+                <p><span style={bubbleStyles}>Full name:</span> {image.camera.full_name}</p>
               </div>
             )}
             <Image className={styles.image} src={image.img_src} alt="NASA Mars Rover Image" width={180} height={180} layout='responsive'/>

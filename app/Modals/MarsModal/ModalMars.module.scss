@@ -29,27 +29,6 @@
     }
 }
 
-@keyframes hideButtonRight {
-    0% {
-        transform: translateX(0);
-        opacity: 1;
-    }
-    100% {
-        transform: translateX(150%);
-        opacity: 0;
-    }
-}
-@keyframes hideButtonLeft {
-    0% {
-        transform: translateX(0);
-        opacity: 1;
-    }
-    100% {
-        transform: translateX(-150%);
-        opacity: 0;
-    }
-}
-
 .modalOverlay {
     position: fixed;
     top: 0;
@@ -80,6 +59,7 @@
     }
     
     .buttonPrev {
+      display: block;
       margin: 0 2rem;
       font-size: 50px;
       width: 80px;
@@ -118,6 +98,7 @@
     }
 
     .buttonNext {
+      display: block;
       margin: 0 2rem;
       font-size: 50px;
       width: 80px;
@@ -156,13 +137,8 @@
     }
 
     @media (max-width: 700px) {
-        .buttonNext{
-            animation: hideButtonRight 0.6s ease-out;
-            display: none;
-        }
-
+        .buttonNext,
         .buttonPrev{
-            animation: hideButtonLeft 0.6s ease-out;
             display: none;
         }
 

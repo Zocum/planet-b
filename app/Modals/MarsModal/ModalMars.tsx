@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import styles from './ModalMars.module.scss';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 interface ImageData {
   img_src: string;
@@ -23,7 +23,6 @@ export default function MarsModal({
 }: ModalProps) {
     const [startX, setStartX] = useState(0);
     const [distanceX, setDistanceX] = useState(0);
-    const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   
     const handleTouchStart = (e: React.TouchEvent) => {
       setStartX(e.touches[0].clientX);
@@ -44,40 +43,6 @@ export default function MarsModal({
       setStartX(0);
       setDistanceX(0);
     };
-
-    useEffect(() => {
-        const handleResize = () => {
-            setWindowWidth(window.innerWidth);
-        };
-
-        window.addEventListener('resize', handleResize);
-
-        // Cleanup
-        return () => {
-            window.removeEventListener('resize', handleResize);
-        }
-    })
-
-    // useEffect(() => {
-    //     if (window.innerWidth <= 700) {
-    //         console.log('ye')
-    //       const buttonNext = document.querySelector('.buttonNext') as HTMLElement;
-    //       const buttonPrev = document.querySelector('.buttonPrev') as HTMLElement;
-          
-    //       const hideButton = (e) => {
-    //         e.target.style.display = 'none';
-    //       };
-      
-    //       buttonNext.addEventListener('animationend', hideButton);
-    //       buttonPrev.addEventListener('animationend', hideButton);
-      
-    //       // Cleanup
-    //       return () => {
-    //         buttonNext.removeEventListener('animationend', hideButton);
-    //         buttonPrev.removeEventListener('animationend', hideButton);
-    //       };
-    //     }
-    //   }, [windowWidth])
 
   return (
     isModalOpen ? (
