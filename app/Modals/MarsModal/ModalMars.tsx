@@ -1,10 +1,7 @@
 import Image from 'next/image';
 import styles from './ModalMars.module.scss';
 import { useState } from 'react';
-
-export interface ImageData {
-  img_src: string;
-}
+import { ImageData } from '@/types';
 
 export interface ModalProps {
   isModalOpen: boolean;
