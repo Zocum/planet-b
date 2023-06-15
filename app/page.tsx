@@ -3,31 +3,10 @@ import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import styles from './page.module.scss';
 import MarsModal from './Modals/MarsModal/ModalMars';
+import ModalInfoButton from './Modals/ModalsInfoButton/ModalInfoButton';
+import { RoverManifest, ImageData } from '@/types';
 
-interface ImageData {
-  img_src: string;
-  status: string;
-  camera: {
-    id: number;
-    name: string;
-    rover_id: number;
-    full_name: string;
-  };
-  earth_date: string;
-}
-interface RoverManifest {
-  photo_manifest: {
-    max_sol: number,
-    landing_date: string,
-    launch_date: string,
-   
-    photos: {
-      sol: number;
-      total_photos: number;
-      cameras: string[];
-    }[]
-  }
-}
+
 
 async function fetchRoverManifest(): Promise<RoverManifest['photo_manifest']['photos']> {
   const API_KEY = 'vTvXej37nbIqMhzi3GwjmXSi1IJpfLqeKl6r7zWa'; // Replace with your API key
@@ -61,7 +40,6 @@ export default function Home() {
   const [manifestPhotos, setManifestPhotos] = useState<RoverManifest['photo_manifest']['photos']>([]);
   const [isModalOpen, setModalOpen] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const [hoveredButton, setHoveredButton] = useState<number | null>(null)
 
 
   useEffect(() => {
@@ -104,10 +82,6 @@ export default function Home() {
     setCurrentImageIndex(index);
   }
 
-  const bubbleStyles = {
-    fontWeight: '700',
-  }
-
   return (
     <main className={styles.main}>
       <h1 className={styles.title}>Mars Curiosity Images</h1>
@@ -146,18 +120,7 @@ export default function Home() {
       <div className={styles.grid}>
         {images.map((image, index) => (
           <div tabIndex={0} key={index} className={styles.card} onClick={() => openModal(index)}>
-            <button className={styles.infoButton}
-              onMouseEnter={() => setHoveredButton(index)}
-              onMouseLeave={() => setHoveredButton(null)}>
-              i
-            </button>
-            {hoveredButton === index && (
-              <div className={styles.bubbleText}>
-                <p><span style={bubbleStyles}>Earth date:</span> {image.earth_date}</p>
-                <p><span style={bubbleStyles}>Camera name:</span> {image.camera.name}</p>
-                <p><span style={bubbleStyles}>Full name:</span> {image.camera.full_name}</p>
-              </div>
-            )}
+            <ModalInfoButton index={index} image={image}/>
             <Image className={styles.image} src={image.img_src} alt="NASA Mars Rover Image" width={180} height={180} layout='responsive'/>
           </div>
         ))}

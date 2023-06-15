@@ -256,41 +256,6 @@
       border-radius: var(--border-radius);
       height: 100% !important;
     }
-
-    .infoButton {
-      position: absolute;
-      margin: 5px 0 0 5px;
-      font-size: 20px;
-      background-repeat: no-repeat;
-      border: none;
-      background-color: aliceblue;
-      width: 25px;
-      height: 25px;
-      border-radius: 50%;
-      box-shadow: 0 0 5px 2px rgba(0,0,0,.8);
-      transition: transform 0.2s ease-in-out;
-      font-family: 'Clicker Script';
-
-      &:hover {
-        transform: scale(1.2);
-        background-color: #faebd7;
-      }
-    }
-
-    .bubbleText {
-      display: block;
-      background: #faebd7;
-      position: absolute;
-      margin: 10px 0 0 50px;
-      width: auto;
-      height: auto;
-      max-width: 400px;
-      max-height: 400px;
-      padding: 5px;
-      border-radius: 3px;
-      font-size: 12px;
-      animation: openBubble 0.4s ease-in-out;
-    }
   }
   
   /* Enable hover only on non-touch devices */
@@ -327,15 +292,6 @@
   @media (min-width: 701px) and (max-width: 800px) {
     .grid {
       grid-template-columns: repeat(2, auto);
-    }
-  }
-  
-  @keyframes openBubble {
-    0% {
-      transform: scale(0);
-    }
-    100% {
-      transform: scale(1);
     }
   }
 }

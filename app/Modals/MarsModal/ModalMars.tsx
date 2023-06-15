@@ -2,11 +2,11 @@ import Image from 'next/image';
 import styles from './ModalMars.module.scss';
 import { useState } from 'react';
 
-interface ImageData {
+export interface ImageData {
   img_src: string;
 }
 
-interface ModalProps {
+export interface ModalProps {
   isModalOpen: boolean;
   currentImageIndex: number;
   images: ImageData[];
