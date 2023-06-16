@@ -1,151 +1,181 @@
 @keyframes openModal {
-    0% {
-        transform: scale(0);
-    }
-    100% {
-        transform: scale(1);
-    }
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 
 @keyframes showButtonLeft {
-    0% {
-        transform: translateX(-150%);
-        display: none;
-        opacity: 0;
-    }
-    100% {
-        transform: translateX(0);
-        opacity: 1;
-        display: block;
-    }
+  0% {
+    transform: translateX(-150%);
+    display: none;
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+    display: block;
+  }
 }
 
 @keyframes showButtonRight {
-    0% {
-        transform: translateX(150%);
-    }
-    100% {
-        transform: translateX(0);
-    }
+  0% {
+    transform: translateX(150%);
+  }
+  100% {
+    transform: translateX(0);
+  }
 }
 
 .modalOverlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.6); /* This creates the blurry background */
+
+  .modal {
+    width: 100%;
+    max-width: 600px;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    background: rgba(0, 0, 0, 0.6); /* This creates the blurry background */
+    flex-direction: row;
+    padding: 2px 2px;
+    border-radius: var(--border-radius);
+    background: var(--card-rgb);
+    transition: transform 0.3s ease-in-out, padding 0.1s ease-in-out;
+    animation: openModal 0.5s ease-out;
+
+    &_image {
+      border-radius: var(--border-radius);
+    }
+
+    .closeButtonWrapper {
+      position: relative;
+
+      .closeModal {
+        background: -webkit-linear-gradient(135deg, #FCCF31 10%, #F55555 100%);
+        color: black;
+        position: absolute;
+        font-family: 'Clicker Script';
+        font-size: 30px;
+        right: 10px;
+        top: 10px;
+        width: 45px;
+        height: 45px;
+        border-radius: 50%;
+        border: none;
+        cursor: pointer;
+        transition: transform 0.2s ease-in-out;
+        box-shadow: 0 0 5px 2px rgba(0,0,0,.7);
+
+        &:hover {
+          transform: scale(1.1) rotate(180deg);
+          background-color: #faebd7;
+          color: whitesmoke;
+          text-shadow: 1px 1px 2px black;
+        }
+      }
+    }
+  }
+  
+  .buttonPrev {
+    display: block;
+    margin: 0 2rem;
+    font-size: 50px;
+    width: 80px;
+    height: 80px;
+    background-color: #f47f36;
+    border: none;
+    border-radius: 50%;
+    background-repeat: no-repeat;
+    color: whitesmoke;
+    transition: transform 0.3s ease-in-out, background-color 0.2s ease-in-out;
+    cursor: pointer;
+    animation: showButtonLeft 0.6s ease-out;
+
+    &:hover {
+      transform: scale(1.1);
+      outline: 2px solid #FCCF31;
+    }
+
+    &:active {
+      transform: scale(1.2);
+      background-color: #dd5500;
+    }
+
+    &:focus {
+      outline: 2px outset white;
+      border: 2px outset black;
+    }
+
+    &:disabled {
+      background-color: gray;
+      border-radius: 50%;
+      background-repeat: no-repeat;
+      border: none;
+      cursor: pointer;
+      pointer-events: none;
+      color: rgb(202, 195, 195);
+    }
+  }
+
+  .buttonNext {
+    display: block;
+    margin: 0 2rem;
+    font-size: 50px;
+    width: 80px;
+    height: 80px;
+    background-color: #f47f36;
+    border: none;
+    border-radius: 50%;
+    background-repeat: no-repeat;
+    color: whitesmoke;
+    transition: transform 0.3s ease-in-out, background-color 0.2s ease-in-out;
+    cursor: pointer;
+    animation: showButtonRight 0.6s ease-out;
+
+    &:hover {
+      transform: scale(1.1);
+      outline: 2px solid #FCCF31;
+    }
+
+    &:active {
+      transform: scale(1.2);
+      background-color: #dd5500;
+    }
+
+    &:focus {
+      outline: 2px outset white;
+      border: 2px outset black;
+    }
+
+    &:disabled {
+      background-color: gray;
+      border-radius: 50%;
+      background-repeat: no-repeat;
+      border: none;
+      cursor: pointer;
+      pointer-events: none;
+      color: rgb(202, 195, 195);
+    }
+  }
+
+  @media (max-width: 700px) {
+    .buttonNext,
+    .buttonPrev{
+      display: none;
+    }
 
     .modal {
-      width: 100%;
-      max-width: 600px;
-      background: white;
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      padding: 2px 2px;
-      border-radius: var(--border-radius);
-      background: var(--card-rgb);
-      transition: transform 0.3s ease-in-out, padding 0.1s ease-in-out;
-      animation: openModal 0.5s ease-out;
-
-      &_image {
-        border-radius: var(--border-radius);
-      }
+      margin: 0 10px;
     }
-    
-    .buttonPrev {
-      display: block;
-      margin: 0 2rem;
-      font-size: 50px;
-      width: 80px;
-      height: 80px;
-      background-color: #f47f36;
-      border: none;
-      border-radius: 50%;
-      background-repeat: no-repeat;
-      color: whitesmoke;
-      transition: transform 0.3s ease-in-out, background-color 0.2s ease-in-out;
-      cursor: pointer;
-      animation: showButtonLeft 0.6s ease-out;
-
-      &:hover {
-        transform: scale(1.2);
-        outline: 2px solid #FCCF31;
-      }
-
-      &:active {
-        background-color: #f2ab39;
-      }
-
-      &:focus {
-        outline: 2px solid whitesmoke;
-      }
-
-      &:disabled {
-        background-color: gray;
-        border-radius: 50%;
-        background-repeat: no-repeat;
-        border: none;
-        cursor: pointer;
-        pointer-events: none;
-        color: rgb(202, 195, 195);
-      }
-    }
-
-    .buttonNext {
-      display: block;
-      margin: 0 2rem;
-      font-size: 50px;
-      width: 80px;
-      height: 80px;
-      background-color: #f47f36;
-      border: none;
-      border-radius: 50%;
-      background-repeat: no-repeat;
-      color: whitesmoke;
-      transition: transform 0.3s ease-in-out, background-color 0.2s ease-in-out;
-      cursor: pointer;
-      animation: showButtonRight 0.6s ease-out;
-
-      &:hover {
-        transform: scale(1.2);
-        outline: 2px solid #FCCF31;
-      }
-
-      &:active {
-        background-color: #f2ab39;
-      }
-
-      &:focus {
-        outline: 2px solid whitesmoke;
-      }
-
-      &:disabled {
-        background-color: gray;
-        border-radius: 50%;
-        background-repeat: no-repeat;
-        border: none;
-        cursor: pointer;
-        pointer-events: none;
-        color: rgb(202, 195, 195);
-      }
-    }
-
-    @media (max-width: 700px) {
-        .buttonNext,
-        .buttonPrev{
-            display: none;
-        }
-
-        .modal {
-            margin: 0 10px;
-        }
-    }
+  }
 }
   
   

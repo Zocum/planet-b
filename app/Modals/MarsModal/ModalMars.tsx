@@ -2,16 +2,13 @@ import Image from 'next/image';
 import styles from './ModalMars.module.scss';
 import { useState } from 'react';
 import { ImageData } from '@/types';
+import ModalInfoButton from '../ModalsInfoButton/ModalInfoButton';
+import { ModalProps} from '@/types';
 
-export interface ModalProps {
-  isModalOpen: boolean;
-  currentImageIndex: number;
-  images: ImageData[];
-  setCurrentImageIndex: (value: (((prevState: number) => number) | number)) => void;
-  setModalOpen: (value: boolean) => void;
-}
 
 export default function MarsModal({
+  clickedButton,
+  setClickedButton,
   isModalOpen, 
   currentImageIndex, 
   images, 
@@ -60,6 +57,7 @@ export default function MarsModal({
              onTouchStart={handleTouchStart}
              onTouchMove={handleTouchMove}
              onTouchEnd={handleTouchEnd}>
+          <ModalInfoButton index={currentImageIndex} image={images[currentImageIndex]} isSmall={false} setClickedButton={setClickedButton} clickedButton={clickedButton} isModalOpen={isModalOpen}/>
           <Image 
             className={styles.modal_image} 
             src={images[currentImageIndex].img_src} 
@@ -68,6 +66,9 @@ export default function MarsModal({
             height={400}
             layout='responsive' 
           />
+          <div className={styles.closeButtonWrapper}>
+            <button className={styles.closeModal} onClick={() => setModalOpen(false)}>X</button>
+          </div>
         </div>
         <div>
           <button 
@@ -82,3 +83,4 @@ export default function MarsModal({
     ) : null
   )
 }
+  

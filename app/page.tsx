@@ -40,6 +40,7 @@ export default function Home() {
   const [manifestPhotos, setManifestPhotos] = useState<RoverManifest['photo_manifest']['photos']>([]);
   const [isModalOpen, setModalOpen] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [clickedButton, setClickedButton] = useState<number | null>(null);
 
 
   useEffect(() => {
@@ -75,7 +76,7 @@ export default function Home() {
 
   console.log(images);
   const imagesPerPage = 25;
-  const totalPhotosForCurrentSol = manifestPhotos.find(photo => photo.sol === currentSol)?.total_photos || 0;
+  const totalPhotosForCurrentSol = manifestPhotos.find(photo => photo.sol === currentSol)?.total_photos ?? 0;
   const maxPagesForCurrentSol = Math.ceil(totalPhotosForCurrentSol / imagesPerPage);
   const openModal = (index: number) => {
     setModalOpen(true);
@@ -88,14 +89,14 @@ export default function Home() {
       <h2 className={styles.subtitle}>Currently viewing:</h2>
       <div className={styles.solButtons}>
         <div>
-          <button className={styles.solButtons_prev} onClick={() => setCurrentSol((old: number | null) => Math.max((old || 1) - 1, 1))}>
+          <button className={styles.solButtons_prev} onClick={() => setCurrentSol((old: number | null) => Math.max((old ?? 1) - 1, 1))}>
             Previous
           </button>
         </div>
         <h1 className={styles.subtitle_sol}>Sol {currentSol}</h1>
         <div>
           <button className={currentSol === maxSol ? styles.solButtons_next_disabled : styles.solButtons_next} 
-          onClick={() => setCurrentSol((old: number | null) => (old || 1) + 1)}
+          onClick={() => setCurrentSol((old: number | null) => (old ?? 1) + 1)}
           disabled={currentSol === maxSol}>
             Next
           </button>
@@ -119,13 +120,18 @@ export default function Home() {
 
       <div className={styles.grid}>
         {images.map((image, index) => (
-          <div tabIndex={0} key={index} className={styles.card} onClick={() => openModal(index)}>
-            <ModalInfoButton index={index} image={image}/>
+          <div tabIndex={0} key={image.id} className={styles.card} 
+            onClick={() => openModal(index)}
+            onMouseLeave={() => {setClickedButton(null)}
+            }>
+            <ModalInfoButton index={index} image={image} isSmall={true} setClickedButton={setClickedButton} clickedButton={clickedButton} isModalOpen={isModalOpen}/>
             <Image className={styles.image} src={image.img_src} alt="NASA Mars Rover Image" width={180} height={180} layout='responsive'/>
           </div>
         ))}
       </div>
       <MarsModal 
+        clickedButton={clickedButton}
+        setClickedButton={setClickedButton}
         isModalOpen={isModalOpen}
         currentImageIndex={currentImageIndex}
         images={images}
