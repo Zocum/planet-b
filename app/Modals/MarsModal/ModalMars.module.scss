@@ -29,6 +29,15 @@
   }
 }
 
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 .modalOverlay {
   position: fixed;
   top: 0;
@@ -90,23 +99,48 @@
     font-size: 50px;
     width: 80px;
     height: 80px;
-    background-color: #f47f36;
+    background: -webkit-linear-gradient(135deg, #FCCF31 10%, #F55555 100%);
     border: none;
     border-radius: 50%;
     background-repeat: no-repeat;
-    color: whitesmoke;
+    color: black;
     transition: transform 0.3s ease-in-out, background-color 0.2s ease-in-out;
     cursor: pointer;
     animation: showButtonLeft 0.6s ease-out;
 
+    &::before {
+      content: '';
+      display: block;
+      border-radius: 50%;
+      width: 80px;
+      margin-top: -.84rem;
+      margin-left: -.1rem;
+      height: 80px;
+      position: absolute;
+      background: transparent;
+      animation: showButtonRight 0.6s ease-out;
+      transition: transform .3s ease-in-out, outline-offset .3s ease-in-out;
+    }
+    
     &:hover {
       transform: scale(1.1);
-      outline: 2px solid #FCCF31;
+      
+      &::before {
+        border: 2px outset rgb(29, 117, 239);
+        outline: 2px inset rgb(29, 117, 239);
+        outline-offset: 6px;
+        transform: scale(1.2) rotate(1turn);
+      }
     }
 
     &:active {
       transform: scale(1.2);
-      background-color: #dd5500;
+      background: -webkit-linear-gradient(135deg, #FCCF31 90%, #F55555 10%);
+
+      &::before {
+        outline-offset: 4px;
+        transform: scale(1.1) rotate(1.5turn);
+      }
     }
 
     &:focus {
@@ -129,25 +163,51 @@
     display: block;
     margin: 0 2rem;
     font-size: 50px;
+    position: relative;
     width: 80px;
     height: 80px;
-    background-color: #f47f36;
+    background: -webkit-linear-gradient(135deg, #FCCF31 10%, #F55555 100%);
     border: none;
     border-radius: 50%;
     background-repeat: no-repeat;
-    color: whitesmoke;
+    color: black;
     transition: transform 0.3s ease-in-out, background-color 0.2s ease-in-out;
     cursor: pointer;
     animation: showButtonRight 0.6s ease-out;
 
+    &::before {
+      content: '';
+      display: block;
+      border-radius: 50%;
+      width: 80px;
+      margin-top: -.84rem;
+      margin-left: -.1rem;
+      height: 80px;
+      position: absolute;
+      background: transparent;
+      animation: showButtonRight 0.6s ease-out;
+      transition: transform .3s ease-in-out, outline-offset .3s ease-in-out;
+    }
+    
     &:hover {
       transform: scale(1.1);
-      outline: 2px solid #FCCF31;
+      
+      &::before {
+        border: 2px outset rgb(29, 117, 239);
+        outline: 2px inset rgb(29, 117, 239);
+        outline-offset: 6px;
+        transform: scale(1.2) rotate(1turn);
+      }
     }
 
     &:active {
       transform: scale(1.2);
-      background-color: #dd5500;
+      background: -webkit-linear-gradient(135deg, #FCCF31 90%, #F55555 10%);
+
+      &::before {
+        outline-offset: 4px;
+        transform: scale(1.1) rotate(1.5turn);
+      }
     }
 
     &:focus {

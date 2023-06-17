@@ -47,6 +47,7 @@ export default function MarsModal({
           <button 
             className={`${styles.buttonPrev}`}
             onClick={() => setCurrentImageIndex(old => Math.max(0, old - 1))}
+            onMouseDown={(e) => e.preventDefault()}
             disabled={currentImageIndex === 0}
           >
             {'<'}
@@ -71,9 +72,11 @@ export default function MarsModal({
           </div>
         </div>
         <div>
+        {/* <div className={styles.rotatingBorder}></div> */}
           <button 
             className={styles.buttonNext}
             onClick={() => setCurrentImageIndex(old => Math.min(images.length - 1, old + 1))}
+            onMouseDown={(e) => e.preventDefault()}
             disabled={currentImageIndex === images.length - 1}
           >
             {'>'}
