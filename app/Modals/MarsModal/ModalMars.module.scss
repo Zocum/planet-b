@@ -135,8 +135,7 @@
     }
 
     &:focus {
-      outline: 2px outset white;
-      border: 2px outset black;
+      transform: scale(1.1);
     }
 
     &:disabled {
@@ -202,8 +201,7 @@
     }
 
     &:focus {
-      outline: 2px outset white;
-      border: 2px outset black;
+      transform: scale(1.1);
     }
 
     &:disabled {

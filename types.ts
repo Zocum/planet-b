@@ -1,4 +1,8 @@
 // Define base types
+export interface HeaderProps {
+    setRover: (value: string) => void;
+}
+
 export interface ImageData {
     id: number;
     img_src: string;
@@ -17,6 +21,8 @@ export interface RoverManifest {
         max_sol: number,
         landing_date: string,
         launch_date: string,
+        name: string,
+        status: string,
         photos: {
         sol: number;
         total_photos: number;
@@ -25,12 +31,12 @@ export interface RoverManifest {
     }
 }
 
-// Use base types to form new ones
 export type ClickedButtonProps = {
-  clickedButton: number | null;
-  setClickedButton: (value: number | null) => void;
+    clickedButton: number | null;
+    setClickedButton: (value: number | null) => void;
 };
 
+// Use base types to form new ones
 export interface ModalInfoButtonProps extends ClickedButtonProps {
     index: number;
     image: ImageData;

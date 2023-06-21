@@ -38,24 +38,25 @@ export default function ModalInfoButton ({index, image, isSmall=false, setClicke
   }, [hoveredButton, isClicked, index]);
 
   const className = 
-  `bubbleText ${hoveredButton === index || isClicked ? '' : '-hide'}
-   ${isSmall ? '-smallView' : ''} ${isModalOpen ? '-modalOpen': ''}`;
+    `bubbleText ${hoveredButton === index || isClicked ? '' : '-hide'}
+    ${isSmall ? '-smallView' : ''} ${isModalOpen ? '-modalOpen': ''}`
+  ;
 
-    return (
-        <Fragment>
-            <button className='infoButton'
-              onMouseEnter={() => setHoveredButton(index)}
-              onMouseLeave={() => setHoveredButton(null)}
-              onClick={handleClick}>
-              i
-            </button>
-            {shouldRenderBubble && (
-              <div className={className}>
-                <p><span style={bubbleStyles}>Earth date:</span> {image.earth_date}</p>
-                <p><span style={bubbleStyles}>Camera name:</span> {image.camera.name}</p>
-                <p><span style={bubbleStyles}>Full name:</span> {image.camera.full_name}</p>
-              </div>
-            )}
-        </Fragment>
-    )
+  return (
+      <Fragment>
+          <button className='infoButton'
+            onMouseEnter={() => setHoveredButton(index)}
+            onMouseLeave={() => setHoveredButton(null)}
+            onClick={handleClick}>
+            i
+          </button>
+          {shouldRenderBubble && (
+            <div className={className}>
+              <p><span style={bubbleStyles}>Earth date:</span> {image.earth_date}</p>
+              <p><span style={bubbleStyles}>Camera name:</span> {image.camera.name}</p>
+              <p><span style={bubbleStyles}>Full name:</span> {image.camera.full_name}</p>
+            </div>
+          )}
+      </Fragment>
+  )
 }
