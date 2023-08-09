@@ -1,7 +1,6 @@
 import Image from 'next/image';
 import styles from './ModalMars.module.scss';
 import { useState } from 'react';
-import { ImageData } from '@/types';
 import ModalInfoButton from '../ModalsInfoButton/ModalInfoButton';
 import { ModalProps} from '@/types';
 
