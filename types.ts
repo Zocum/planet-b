@@ -5,6 +5,7 @@ export interface HeaderProps {
 
 export interface ImageData {
     id: number;
+    sol: string;
     img_src: string;
     status: string;
     camera: {
