@@ -38,8 +38,14 @@ export default function Accordion({ children }: AccordionComponentProps) {
 
         // Store the current height of the element
         const startHeight = `${el.offsetHeight}px`;
-        // Calculate the height of the summary
-        const endHeight = `${summary.offsetHeight}px`;
+
+        // Get computed style to retrieve padding values
+        const computedStyle = window.getComputedStyle(el);
+        const paddingTop = parseFloat(computedStyle.paddingTop);
+        const paddingBottom = parseFloat(computedStyle.paddingBottom);
+
+        // Calculate the height of the summary and add the padding
+        const endHeight = `${summary.offsetHeight + paddingTop + paddingBottom}px`;
 
         // If there is already an animation running
         if (animation) {
@@ -55,7 +61,7 @@ export default function Accordion({ children }: AccordionComponentProps) {
             // If the duration is too slow or fast, you can change it here
             duration: 400,
             // You can also change the ease of the animation
-            easing: 'ease-out'
+            easing: 'ease-in-out'
         });
 
         // When the animation is complete, call onAnimationFinish()
@@ -78,8 +84,14 @@ export default function Accordion({ children }: AccordionComponentProps) {
         isExpanding = true;
         // Get the current fixed height of the element
         const startHeight = `${el.offsetHeight}px`;
+
+        // Get computed style to retrieve padding values
+        const computedStyle = window.getComputedStyle(el);
+        const paddingTop = parseFloat(computedStyle.paddingTop);
+        const paddingBottom = parseFloat(computedStyle.paddingBottom);
+
         // Calculate the open height of the element (summary height + content height)
-        const endHeight = `${summary.offsetHeight + content.offsetHeight}px`;
+        const endHeight = `${summary.offsetHeight + paddingBottom + paddingTop + content.offsetHeight}px`;
 
         // If there is already an animation running
         if (animation) {

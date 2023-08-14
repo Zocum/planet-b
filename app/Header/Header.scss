@@ -47,7 +47,6 @@
                 background: black;
                 display: flex;
                 flex-flow: column wrap;
-                transition: transform 0.4s ease-in-out;
                 
                 @media (max-width: 700px) {
                     max-width: 100%;
