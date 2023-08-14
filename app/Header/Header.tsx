@@ -13,7 +13,8 @@ export default function Header({ setRover }: HeaderProps) {
                     <div className='header-nav-details_wrapper'>
                         <Accordion>
                             <summary aria-label='List of Mars Rovers' aria-hidden={isDetailsOpen} onClick={() => 
-                                setIsDetailsOpen(!isDetailsOpen)}>Mars Rovers<div>{'>'}</div></summary>
+                                setIsDetailsOpen(!isDetailsOpen)}>Mars Rovers<div>{'>'}</div>
+                            </summary>
                             <div className="button_wrapper content">
                                 <button onClick={() => setRover('perseverance')}>Perseverance</button>
                                 <button onClick={() => setRover('curiosity')}>Curiosity</button>
