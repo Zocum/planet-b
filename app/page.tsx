@@ -42,7 +42,6 @@ export default function Home() {
   const [clickedButton, setClickedButton] = useState<number | null>(null);
   const [rover, setRover] = useState<string>('perseverance');
 
-
   useEffect(() => {
     fetchRoverManifest(rover)
       .then(photo_manifest => {
