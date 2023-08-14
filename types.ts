@@ -1,6 +1,12 @@
+import { ReactNode } from "react";
+
 // Define base types
 export interface HeaderProps {
     setRover: (value: string) => void;
+}
+
+export interface AccordionComponentProps {
+    children: ReactNode;
 }
 
 export interface ImageData {
