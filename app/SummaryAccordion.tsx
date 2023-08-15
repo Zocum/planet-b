@@ -135,15 +135,26 @@ export default function Accordion({ children }: AccordionComponentProps) {
         }
     };
 
+    const onMouseLeave = () => {
+        if (el.open) {
+            shrink();
+            setIsOpen(false);
+            el.style.overflow = 'hidden';
+
+        }
+    }
+
     // Add event listener for the summary click
-    summary.addEventListener('click', onClick);
+    el.addEventListener('mouseenter', onClick);
+    el.addEventListener('mouseleave', onMouseLeave);
 
     // Add event listener for clicks outside of the accordion
     document.addEventListener('click', onClickOutside);
 
     // Cleanup the event listener when the component unmounts
     return () => {
-      summary.removeEventListener('click', onClick);
+      el.removeEventListener('mouseenter', onClick);
+      el.removeEventListener('mouseleave', onMouseLeave);
       document.removeEventListener('click', onClickOutside);
     };
 
