@@ -27,6 +27,12 @@
                 border-radius: 5px;
                 display: flex;
                 z-index: 10;
+                
+                > details[open] {
+                    outline: 1px dashed #00fff7;
+                    outline-offset: -4px;
+                    transition: outline .2s ease-in-out;
+                }
 
                 @media (max-width: 700px) {
                     width: 100%;
@@ -75,6 +81,8 @@
                     @media (min-width: 700px) {
                         &:hover {
                             transform: scale(1.02);
+                            background: #6200ff;
+                            transition: transform .2s ease, background .2s ease;
                         }
                     }
 
@@ -114,12 +122,18 @@
                         background: transparent;
                         margin: 0.25rem 0;
                         cursor: pointer;
-                        transition: transform 0.2s ease-in-out;
+                        transition: transform 0.2s ease-in-out, background .2s ease;
                         color: antiquewhite;
                         border-radius: 5px;
     
                         &:hover {
                             transform: scale(1.05);
+                            background: #4400ff;
+                        }
+
+                        &:active {
+                            transform: scale(1.1);
+                            background: #6200ff;
                         }
     
                         &:focus-visible {

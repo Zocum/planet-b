@@ -6,6 +6,55 @@
   margin: 6rem;
   min-height: 100vh;
   padding-top: 1rem;
+  position: relative;
+
+  &_logo {
+    display: none;
+
+    @media (min-width: 700px) {
+      display: block;
+      position: absolute;
+      top: -8rem;
+      left: -6rem;
+  
+      img {
+        width: 200px !important;
+        height: 200px !important;
+      }
+  
+      &_text {
+        background: linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%, rgba(252,176,69,1) 100%);
+        align-items: center;
+        display: flex;
+        justify-content: center;
+        position: absolute;
+        top: 9rem;
+        left: 3.5rem;
+        font-family: Georgia, 'Times New Roman', Times, serif;
+        font-weight: 900;
+        font-style: oblique;
+        font-size:x-large;
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        cursor: pointer;
+        animation: steam 20s linear infinite;
+        background-size: 400%;
+      }
+    }
+  }
+
+  @keyframes steam {
+    0% {
+      background-position: 0, 0;
+    }
+    50% {
+      background-position: 400%, 0;
+    }
+    100% {
+      background-position: 0, 0;
+    }
+  }
   
   .title {
     text-align: center;
@@ -263,7 +312,6 @@
   /* Enable hover only on non-touch devices */
   @media (hover: hover) and (pointer: fine) {
     .card:hover {
-      padding: 4px 4px;
       transform: scale(1.05);
     }
   }
@@ -297,4 +345,6 @@
     }
   }
 }
+
+
 

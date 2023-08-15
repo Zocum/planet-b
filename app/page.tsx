@@ -93,6 +93,10 @@ export default function Home() {
     <Fragment> 
       <Header setRover={setRover}/>
       <main className={styles.main}>
+        <a className={styles.main_logo} href='/'>
+            <Image src='/logo.png' width={50} height={50} alt='Logo Planet B' layout='responsive'/>
+            <p className={styles.main_logo_text}>Planet B</p>
+        </a>
         <h1 className={styles.title}>{roverName} Images <p style={statusStyle}>Rover Status: {roverStatus.charAt(0).toUpperCase() + roverStatus.slice(1)}</p></h1>
         <h2 className={styles.subtitle}>Currently viewing:</h2>
         <div className={styles.solButtons}>
