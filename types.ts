@@ -54,6 +54,8 @@ export interface ModalInfoButtonProps extends ClickedButtonProps {
 export interface ModalProps extends ClickedButtonProps {
     isModalOpen: boolean;
     currentImageIndex: number;
+    currentPage: number;
+    maxPagesForCurrentSol: number;
     images: ImageData[];
     setCurrentImageIndex: (value: (((prevState: number) => number) | number)) => void;
     setModalOpen: (value: boolean) => void;

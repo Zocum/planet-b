@@ -150,6 +150,8 @@ export default function Home() {
           setClickedButton={setClickedButton}
           isModalOpen={isModalOpen}
           currentImageIndex={currentImageIndex}
+          currentPage={currentPage}
+          maxPagesForCurrentSol={maxPagesForCurrentSol}
           images={images}
           setCurrentImageIndex={setCurrentImageIndex}
           setModalOpen={setModalOpen}/>

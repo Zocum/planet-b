@@ -81,8 +81,78 @@
           text-shadow: 1px 1px 2px black;
         }
       }
+
+      .pageButtons {
+        position: absolute;
+        bottom: .3rem;
+        right: 10px;
+        font-family: 'Clicker Script';
+        display: flex;
+        flex-direction: row-reverse;
+        align-items: center;
+        gap: 1rem;
+
+        .nextPage {
+          background: -webkit-linear-gradient(135deg, #FCCF31 10%, #F55555 100%);
+          border-radius: 5px;
+          width: 7rem;
+          height: 2rem;
+          font-size: 15px;
+          border: none;
+          cursor: pointer;
+          transition: transform 0.2s ease-in-out;
+          box-shadow: 0 0 5px 2px rgba(0,0,0,.7);
+
+          &:hover {
+            transform: scale(1.05);
+            background-color: #faebd7;
+            color: whitesmoke;
+            text-shadow: 1px 1px 2px black;
+          }
+        }
+
+        .previousPage {
+          background: -webkit-linear-gradient(135deg, #FCCF31 10%, #F55555 100%);
+          border-radius: 5px;
+          width: 7rem;
+          height: 2rem;
+          font-size: 15px;
+          border: none;
+          cursor: pointer;
+          transition: transform 0.2s ease-in-out;
+          box-shadow: 0 0 5px 2px rgba(0,0,0,.7);
+
+          &:hover {
+            transform: scale(1.05);
+            background-color: #faebd7;
+            color: whitesmoke;
+            text-shadow: 1px 1px 2px black;
+          }
+        }
+      }
     }
   }
+
+  .finalMessage {
+    transition: transform .4s ease-in-out;
+    position: absolute;
+    display: none;
+
+    &.appear {
+     display: block;
+
+      span {
+        color: white;
+        max-width: 150px;
+        line-break: auto;
+        text-align: center;
+        margin: 0;
+        text-shadow: 1px 1px 10px black;
+      }
+    }
+
+  }
+
   
   .buttonPrev {
     display: block;
