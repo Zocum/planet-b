@@ -26,7 +26,6 @@ export default function ModalInfoButton ({index, image, isSmall=false, setClicke
   useEffect(() => {
     if ((hoveredButton === index || isClicked) && isActive) {
       setShouldRenderBubble(true);
-      console.log('yee')
     } else {
       const timeoutId = setTimeout(() => {
         setShouldRenderBubble(false);

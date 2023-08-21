@@ -6,6 +6,7 @@ import MarsModal from './Modals/MarsModal/ModalMars';
 import ModalInfoButton from './Modals/ModalsInfoButton/ModalInfoButton';
 import { RoverManifest, ImageData } from '@/types';
 import Header from './Header/Header';
+import Footer from './Footer/Footer';
 
 async function fetchRoverManifest(rover: string): Promise<RoverManifest['photo_manifest']> {
   const API_KEY = 'vTvXej37nbIqMhzi3GwjmXSi1IJpfLqeKl6r7zWa'; // Replace with your API key
@@ -163,6 +164,7 @@ export default function Home() {
           setModalOpen={setModalOpen}
         />
       </main>
+      <Footer/>
     </Fragment>
   );
 };

@@ -78,7 +78,7 @@ export default function MarsModal({
         setMessageOpen(true);
       }
     }, [lastImage]);
-    
+
     const closeMessage = () => {
       const currentfMessage = fMessageRef.current;
         animation = (currentfMessage as HTMLDivElement).animate([
@@ -93,8 +93,7 @@ export default function MarsModal({
         setMessageOpen(false);
       }, 380);
     };
-      
-    console.log(messageOpen)
+
   return (
     isModalOpen ? (
       <div className={`${styles.modalOverlay}`} onClick={(e) => {
