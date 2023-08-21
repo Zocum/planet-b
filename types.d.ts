@@ -1,17 +1,17 @@
 import { ReactNode } from "react";
 
 // Define base types
-export interface HeaderProps {
+interface HeaderProps {
     setRover: (value: string) => void;
 }
 
-export interface AccordionComponentProps {
+interface AccordionComponentProps {
     children: ReactNode;
     summaryRef: React.RefObject<HTMLElement>;
     contentRef: React.RefObject<HTMLDivElement>;
 }
 
-export interface ImageData {
+interface ImageData {
     id: number;
     sol: string;
     img_src: string;
@@ -25,7 +25,7 @@ export interface ImageData {
     earth_date: string;
 }
 
-export interface RoverManifest {
+interface RoverManifest {
     photo_manifest: {
         max_sol: number,
         landing_date: string,
@@ -40,20 +40,20 @@ export interface RoverManifest {
     }
 }
 
-export type ClickedButtonProps = {
+type ClickedButtonProps = {
     clickedButton: number | null;
     setClickedButton: (value: number | null) => void;
 };
 
 // Use base types to form new ones
-export interface ModalInfoButtonProps extends ClickedButtonProps {
+interface ModalInfoButtonProps extends ClickedButtonProps {
     index: number;
     image: ImageData;
     isSmall: boolean;
     isModalOpen: boolean;
 }
 
-export interface ModalProps extends ClickedButtonProps {
+interface ModalProps extends ClickedButtonProps {
     isModalOpen: boolean;
     currentImageIndex: number;
     currentPage: number;
