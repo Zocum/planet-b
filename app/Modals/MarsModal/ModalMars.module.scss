@@ -91,6 +91,7 @@
         flex-direction: row-reverse;
         align-items: center;
         gap: 1rem;
+        animation: openModal 0.8s ease-out;
 
         .nextPage {
           background: -webkit-linear-gradient(135deg, #FCCF31 10%, #F55555 100%);
@@ -145,9 +146,13 @@
     transition: transform .4s ease-in-out;
     position: absolute;
     display: none;
+    padding: 1rem;
+    border-radius: 20px;
+    background: teal;
 
     &.appear {
-     display: block;
+      display: block;
+      animation: openModal 0.5s ease-out;
 
       span {
         color: white;
@@ -155,12 +160,27 @@
         line-break: auto;
         text-align: center;
         margin: 0;
-        text-shadow: 1px 1px 10px black;
       }
     }
 
-  }
+    .closeMessage {
+      position: absolute;
+      right: 20px;
+      top: -20px;
+      background: teal;
+      border: none;
+      color: white;
+      font-size: 18px;
+      padding: 8px;
+      border-radius: 15px;
+      cursor: pointer;
+      transition: transform 0.2s ease-in-out;
 
+      &:hover {
+        transform: scale(1.3) translateY(-5px);
+      }
+    }
+  }
   
   .buttonPrev {
     display: block;
@@ -217,7 +237,7 @@
     }
 
     &:disabled {
-      background-color: gray;
+      background: gray;
       border-radius: 50%;
       background-repeat: no-repeat;
       border: none;
@@ -283,7 +303,7 @@
     }
 
     &:disabled {
-      background-color: gray;
+      background: gray;
       border-radius: 50%;
       background-repeat: no-repeat;
       border: none;

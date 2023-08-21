@@ -41,6 +41,7 @@ export default function Home() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [clickedButton, setClickedButton] = useState<number | null>(null);
   const [rover, setRover] = useState<string>('perseverance');
+  const [messageOpen, setMessageOpen] = useState<boolean>(false);
 
   useEffect(() => {
     fetchRoverManifest(rover)
@@ -64,8 +65,10 @@ export default function Home() {
   useEffect(() => {
     if (isModalOpen) {
       document.documentElement.style.overflow = 'hidden';
+      setMessageOpen(true);
     } else {
       document.documentElement.style.overflow = 'unset';
+      setMessageOpen(false);
     }
   
     return () => {
@@ -153,6 +156,8 @@ export default function Home() {
           currentPage={currentPage}
           maxPagesForCurrentSol={maxPagesForCurrentSol}
           images={images}
+          messageOpen={messageOpen}
+          setMessageOpen={setMessageOpen}
           setCurrentImageIndex={setCurrentImageIndex}
           setCurrentPage={setCurrentPage}
           setModalOpen={setModalOpen}

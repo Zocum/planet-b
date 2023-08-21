@@ -11,7 +11,7 @@
             justify-content: flex-end;
 
             @media (min-width: 700px) {
-                margin: 1px 6rem;
+                margin: 0 6rem;
                 padding: 0 40px;
             }
             
@@ -23,15 +23,19 @@
                 -moz-user-select: none;
                 -ms-user-select: none;
                 user-select: none;
-                border: 1px solid #FCCF31;
                 border-radius: 5px;
+                border: 2px solid #FCCF31;
                 display: flex;
                 z-index: 10;
                 
-                > details[open] {
-                    outline: 1px dashed #00fff7;
-                    outline-offset: -4px;
-                    transition: outline .2s ease-in-out;
+                > details {
+                    border-radius: 5px;
+                    
+                    &[open] {
+                        outline: 1px dashed #00fff7;
+                        outline-offset: -4px;
+                        transition: outline .2s ease-in-out;
+                    }
                 }
 
                 @media (max-width: 700px) {
