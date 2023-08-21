@@ -154,7 +154,9 @@ export default function Home() {
           maxPagesForCurrentSol={maxPagesForCurrentSol}
           images={images}
           setCurrentImageIndex={setCurrentImageIndex}
-          setModalOpen={setModalOpen}/>
+          setCurrentPage={setCurrentPage}
+          setModalOpen={setModalOpen}
+        />
       </main>
     </Fragment>
   );

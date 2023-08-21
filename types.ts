@@ -7,6 +7,8 @@ export interface HeaderProps {
 
 export interface AccordionComponentProps {
     children: ReactNode;
+    summaryRef: React.RefObject<HTMLElement>;
+    contentRef: React.RefObject<HTMLDivElement>;
 }
 
 export interface ImageData {
@@ -58,5 +60,6 @@ export interface ModalProps extends ClickedButtonProps {
     maxPagesForCurrentSol: number;
     images: ImageData[];
     setCurrentImageIndex: (value: (((prevState: number) => number) | number)) => void;
+    setCurrentPage: (value: (((prevState: number) => number) | number)) => void;
     setModalOpen: (value: boolean) => void;
 }

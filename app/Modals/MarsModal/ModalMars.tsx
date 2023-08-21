@@ -14,6 +14,7 @@ export default function MarsModal({
   maxPagesForCurrentSol, 
   images, 
   setCurrentImageIndex,
+  setCurrentPage,
   setModalOpen
 }: ModalProps) {
     const [startX, setStartX] = useState(0);
@@ -65,6 +66,8 @@ export default function MarsModal({
       setIsDragging(false);
     };
 
+    const lastImage = currentImageIndex === images.length - 1;
+
   return (
     isModalOpen ? (
       <div className={`${styles.modalOverlay}`} onClick={(e) => {
@@ -100,13 +103,24 @@ export default function MarsModal({
           />
           <div className={styles.closeButtonWrapper}>
             <button className={styles.closeModal} onClick={() => setModalOpen(false)}>X</button>
-            <div className={styles.pageButtons}>
-              <button className={styles.nextPage}>Next Page</button>
-              <button className={styles.previousPage}>Previous Page</button>
-            </div>
+            { lastImage 
+              ? ( 
+                  <div className={styles.pageButtons}>
+                    <button className={styles.nextPage} disabled={currentPage === maxPagesForCurrentSol} onClick={() => {
+                      setCurrentPage((old: number) => Math.max(old + 1, 1));
+                      setCurrentImageIndex(0);
+                    }}>Next Page</button>
+                    <button className={styles.previousPage} disabled={currentPage === 1} onClick={() => {
+                      setCurrentPage((old: number) => Math.max(old -1, 1));
+                      setCurrentImageIndex(0);
+                    }}>Previous Page</button>
+                  </div>
+                ) 
+              : null 
+            }
           </div>
         </div>
-        <div className={`${styles.finalMessage} ${currentImageIndex === images.length - 1 ? styles.appear : ''}`}>
+        <div className={`${styles.finalMessage} ${currentPage === maxPagesForCurrentSol ? styles.appear : ''}`}>
           <span>Enough images for today...or 'tosol'? <p>Go check out another Sol!</p></span>
         </div>
         <div>

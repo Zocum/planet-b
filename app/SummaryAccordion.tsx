@@ -1,7 +1,7 @@
 import { useRef, useEffect, useState } from 'react';
 import { AccordionComponentProps } from '@/types';
 
-export default function Accordion({ children }: AccordionComponentProps) {
+export default function Accordion({ children, summaryRef, contentRef }: AccordionComponentProps) {
   const detailsRef = useRef<HTMLDetailsElement | null>(null);
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [windowWidth, setWindowWidth] = useState<number | null>(typeof window !== 'undefined' ? window.innerWidth : null);
@@ -10,8 +10,8 @@ export default function Accordion({ children }: AccordionComponentProps) {
         if (!detailsRef.current) return;
         
         const el = detailsRef.current;
-        const summary = el.querySelector('summary') as HTMLElement;
-        const content = el.querySelector('.content') as HTMLElement;
+        const summary = summaryRef.current;
+        const content = contentRef.current;
         
         let animation: Animation | null = null;
         let isClosing: boolean = false;
@@ -34,7 +34,7 @@ export default function Accordion({ children }: AccordionComponentProps) {
         };
 
         const shrink = () => {
-        // Set the element as "being closed"
+            // Set the element as "being closed"
             isClosing = true;
 
             // Store the current height of the element
@@ -46,7 +46,7 @@ export default function Accordion({ children }: AccordionComponentProps) {
             const paddingBottom = parseFloat(computedStyle.paddingBottom);
 
             // Calculate the height of the summary and add the padding
-            const endHeight = `${summary.offsetHeight + paddingTop + paddingBottom}px`;
+            const endHeight = `${(summary as HTMLElement).offsetHeight + paddingTop + paddingBottom}px`;
 
             // If there is already an animation running
             if (animation) {
@@ -72,7 +72,7 @@ export default function Accordion({ children }: AccordionComponentProps) {
         };
 
         const open = () => {
-        // Apply a fixed height on the element
+            // Apply a fixed height on the element
             el.style.height = `${el.offsetHeight}px`;
             // Force the [open] attribute on the details element
             el.open = true;
@@ -92,7 +92,7 @@ export default function Accordion({ children }: AccordionComponentProps) {
             const paddingBottom = parseFloat(computedStyle.paddingBottom);
 
             // Calculate the open height of the element (summary height + content height + paddings)
-            const endHeight = `${summary.offsetHeight + paddingBottom + paddingTop + content.offsetHeight}px`;
+            const endHeight = `${(summary as HTMLElement).offsetHeight + paddingBottom + paddingTop + (content as HTMLElement).offsetHeight}px`;
 
             // If there is already an animation running
             if (animation) {
@@ -100,7 +100,7 @@ export default function Accordion({ children }: AccordionComponentProps) {
                 animation.cancel();
             }
 
-            // Start a WAAPI animation
+            // Start animation
             animation = el.animate({
                 // Set the keyframes from the startHeight to endHeight
                 height: [startHeight, endHeight]
@@ -117,15 +117,15 @@ export default function Accordion({ children }: AccordionComponentProps) {
         };
 
         const onAnimationFinish = (open: boolean) => {
-        // Set the open attribute based on the parameter
-        el.open = open;
+            // Set the open attribute based on the parameter
+            el.open = open;
             // Clear the stored animation
-        animation = null;
+            animation = null;
             // Reset isClosing & isExpanding
-        isClosing = false;
-        isExpanding = false;
+            isClosing = false;
+            isExpanding = false;
             // Remove the overflow hidden and the fixed height
-        el.style.height = el.style.overflow = '';
+            el.style.height = el.style.overflow = '';
         };
 
         const onClickOutside = (event: MouseEvent) => {
@@ -175,7 +175,7 @@ export default function Accordion({ children }: AccordionComponentProps) {
         el?.removeEventListener('click', onClick);
         };
 
-    }, []);
+    }, [windowWidth]);
 
   return (
     <details ref={detailsRef} className={`${isOpen ? '-open' : ''}`}>
