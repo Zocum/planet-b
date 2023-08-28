@@ -21,7 +21,7 @@ async function fetchRoverManifest(rover: string): Promise<RoverManifest['photo_m
 }
 
 async function fetchImages(sol: number, page: number, rover: string): Promise<ImageData[]> {
-  const API_KEY = 'vTvXej37nbIqMhzi3GwjmXSi1IJpfLqeKl6r7zWa'; // Replace with your API key
+  const API_KEY = 'vTvXej37nbIqMhzi3GwjmXSi1IJpfLqeKl6r7zWa'; 
   const response = await fetch(`https://api.nasa.gov/mars-photos/api/v1/rovers/${rover}/photos?sol=${sol}&page=${page}&api_key=${API_KEY}`);
   
   if (!response.ok) {
