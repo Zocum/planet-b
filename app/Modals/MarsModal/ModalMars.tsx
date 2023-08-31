@@ -23,8 +23,6 @@ export default function MarsModal({
     const [distanceX, setDistanceX] = useState(0);
     const [isDragging, setIsDragging] = useState<boolean>(false);
     const fMessageRef = useRef<HTMLDivElement | null>(null);
-    
-    let animation: Animation | null = null;
   
     const handleTouchStart = (e: React.TouchEvent) => {
       setStartX(e.touches[0].clientX);
@@ -81,7 +79,7 @@ export default function MarsModal({
 
     const closeMessage = () => {
       const currentfMessage = fMessageRef.current;
-        animation = (currentfMessage as HTMLDivElement).animate([
+        (currentfMessage as HTMLDivElement).animate([
           { transform: 'scale(1)'},
           { transform: 'scale(0)'},
         ], {
@@ -149,7 +147,7 @@ export default function MarsModal({
         { messageOpen ? (
             <div ref={fMessageRef} className={`${styles.finalMessage} ${(currentPage === maxPagesForCurrentSol && currentImageIndex === images.length -1) ? styles.appear : ''}`}>
               <button className={styles.closeMessage} onClick={() => closeMessage()}><span>X</span></button>
-              <span>Enough images for today...or 'tosol'? <p>Go check out another Sol!</p></span>
+              <span>Enough images for today...or &apos;tosol&apos;? <p>Go check out another Sol!</p></span>
             </div>
           ) : null 
           }
