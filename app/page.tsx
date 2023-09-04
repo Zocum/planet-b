@@ -84,7 +84,7 @@ export default function Home() {
   const roverName = manifestPhotos ? manifestPhotos.name : '';
   const roverStatus = manifestPhotos ? manifestPhotos.status : '';
   const statusStyle = {
-    fontSize: '20px;',
+    fontSize: '20px',
     color: 'whitesmoke'
   }
 
