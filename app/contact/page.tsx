@@ -13,7 +13,7 @@ export default function Contact() {
   display: 'flex',
   justifyContent: 'space-between',
  };
- 
+
   return (
     <>
     <header style={headerStyles}> 
