@@ -77,7 +77,7 @@ export default function Home() {
     };
   }, [isModalOpen]);
 
-  console.log(images);
+  // console.log(images);
   const imagesPerPage = 25;
   const totalPhotosForCurrentSol = manifestPhotos ? manifestPhotos.photos.find(photo => photo.sol === currentSol)?.total_photos ?? 0 : 0;
   const maxPagesForCurrentSol = Math.ceil(totalPhotosForCurrentSol / imagesPerPage);
@@ -85,7 +85,7 @@ export default function Home() {
   const roverStatus = manifestPhotos ? manifestPhotos.status : '';
   const statusStyle = {
     fontSize: '20px;',
-    color: 'whitesmoke;'
+    color: 'whitesmoke'
   }
 
   const openModal = (index: number) => {
@@ -99,7 +99,7 @@ export default function Home() {
       <main className={styles.main}>
         <a className={styles.main_logo} href='/'>
             <Image src='/logo.png' width={50} height={50} alt='Logo Planet B' layout='responsive'/>
-            <p className={styles.main_logo_text}>Planet B</p>
+            <p className={styles.main_logo_text}>Martian Gallery</p>
         </a>
         <h1 className={styles.title}>{roverName} Images <p style={statusStyle}>Rover Status: {roverStatus.charAt(0).toUpperCase() + roverStatus.slice(1)}</p></h1>
         <h2 className={styles.subtitle}>Currently viewing:</h2>

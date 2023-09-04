@@ -1,5 +1,19 @@
 .footerWrapper {
     color: white;
-    margin: 1rem 6rem 2rem 6rem;
-    padding: 0 40px;
+    margin: 1rem 6rem 2rem calc(6rem + 40px);
+    display: flex;
+    justify-content: space-between;
+
+    p a:hover {
+        text-decoration: underline;
+        transition: text-decoration 0.2s ease-in-out;
+    }
+
+    &_contact:hover {
+        outline: 1px solid white;
+        outline-offset: .5rem;
+        border-radius: 5px;
+        transform: scale(1.05);
+        transition: transform 0.2s ease, outline-offset 0.2s ease-in-out;
+    }
 }
