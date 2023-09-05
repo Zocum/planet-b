@@ -1,0 +1,9 @@
+{
+    "welcome": "Welcome to our Martian Gallery, where we bring the fascinating visuals of the Martian surface directly to your screen. Our portal serves as a gateway to experience the Martian environment through the lenses of NASA's Mars rovers.",
+    "sources": "Where are the images sourced from?",
+    "sourcesText": "This project would not have been possible without NASA's contribution in providing these resources for free. The images exhibited on our gallery are sourced directly from ",
+    "sourcesLink": {
+        "text": "NASA's Mars Rover Photos API.",
+        "url": "https://api.nasa.gov/"
+    }
+}
