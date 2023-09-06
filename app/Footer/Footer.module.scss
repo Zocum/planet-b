@@ -4,16 +4,39 @@
     display: flex;
     justify-content: space-between;
 
+    @media (max-width: 700px) {
+        flex-direction: column;
+        gap: 1rem;
+        margin: 1rem 2rem 2rem calc(2rem + 40px);
+    }
+
     p a:hover {
         text-decoration: underline;
         transition: text-decoration 0.2s ease-in-out;
     }
 
-    &_contact:hover {
-        outline: 1px solid white;
-        outline-offset: .5rem;
-        border-radius: 5px;
-        transform: scale(1.05);
-        transition: transform 0.1s ease, outline-offset 0.1s ease-in-out;
+    &_contact {
+        
+        @media (max-width: 700px) {
+            border: 1px solid antiquewhite;
+            width: fit-content;
+            border-radius: 5px;
+            padding: .5rem;
+        }
+
+        &:hover {
+            outline: 1px solid white;
+            outline-offset: .5rem;
+            border-radius: 5px;
+            transform: scale(1.05);
+            transition: transform 0.1s ease, outline-offset 0.1s ease-in-out;
+            cursor: pointer;
+
+            @media (max-width: 700px) {
+                transform: none;
+                outline: none;
+            }
+        }
     }
+    
 }
