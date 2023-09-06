@@ -9,10 +9,12 @@
         &-container {
             display: flex;
             justify-content: flex-end;
+            margin-left: 20rem;
 
             @media (min-width: 700px) {
-                margin: 0 6rem;
-                padding: 0 40px;
+                // margin: 0 6rem;
+                // padding: 0 40px;
+                
             }
             
             .header-nav-details_wrapper {
@@ -23,10 +25,14 @@
                 -moz-user-select: none;
                 -ms-user-select: none;
                 user-select: none;
-                border-radius: 5px;
+                border-radius: 0;
                 border: 2px solid #FCCF31;
                 display: flex;
                 z-index: 10;
+
+                    border-top: none;
+                    border-right: none;
+                    
                 
                 > details {
                     border-radius: 5px;
@@ -44,7 +50,6 @@
                     align-items: center;
                     justify-content: center;
                     margin-bottom: 1rem;
-                    border-radius: 5px;
                 }
             }
             
