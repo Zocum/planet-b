@@ -99,7 +99,7 @@ export default function Home() {
       <main className={styles.main}>
         <a className={styles.main_logo} href='/'>
             <Image src='/logo.png' width={50} height={50} alt='Logo Planet B' layout='responsive'/>
-            <p className={styles.main_logo_text}>Mars Window</p>
+            <p className={styles.main_logo_text}>The Stellar Observatory</p>
         </a>
         <h1 className={styles.title}>{roverName} Images <p style={statusStyle}>Rover Status: {roverStatus.charAt(0).toUpperCase() + roverStatus.slice(1)}</p></h1>
         <h2 className={styles.subtitle}>Currently viewing:</h2>
