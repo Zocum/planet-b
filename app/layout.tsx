@@ -1,6 +1,7 @@
 import './globals.scss';
 // import { Inter } from 'next/font/google';
 import type { Metadata } from 'next';
+import { Analytics } from '@vercel/analytics/react';
 
 // const inter = Inter({ subsets: ['latin'] })
 
@@ -16,7 +17,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        {children} <Analytics/> 
+        </body>
     </html>
   )
 }
