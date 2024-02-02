@@ -77,8 +77,8 @@ export default function Home() {
     };
   }, [isModalOpen]);
 
-  // console.log(images);
-  const imagesPerPage = 25;
+  // console.log(images.length);
+  const imagesPerPage = images.length;
   const totalPhotosForCurrentSol = manifestPhotos ? manifestPhotos.photos.find(photo => photo.sol === currentSol)?.total_photos ?? 0 : 0;
   const maxPagesForCurrentSol = Math.ceil(totalPhotosForCurrentSol / imagesPerPage);
   const roverName = manifestPhotos ? manifestPhotos.name : '';

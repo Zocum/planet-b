@@ -7,6 +7,22 @@
   min-height: 100vh;
   padding-top: 1rem;
   position: relative;
+  
+  // &::before {
+  //   content: "";
+  //   position: absolute;
+  //   top: -6rem; 
+  //   bottom: -3rem; 
+  //   left: -6rem; 
+  //   right: -6rem; 
+  //   background-image: url('./Background/images/mars-inspired-background.png');
+  //   background-repeat: no-repeat;
+  //   background-size: cover;
+  //   background-position: center;
+  //   background-attachment: fixed;
+  //   z-index: -1; 
+  // }
+
 
   &_logo {
     display: block;
@@ -303,7 +319,7 @@
     padding: 40px;
     display: grid;
     gap: 10px;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     width: 100%;
     max-width: 100%;
     cursor: pointer;

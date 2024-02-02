@@ -10,14 +10,8 @@
             display: flex;
             justify-content: flex-end;
             margin-left: 20rem;
-
-            @media (min-width: 700px) {
-                // margin: 0 6rem;
-                // padding: 0 40px;
-                
-            }
             
-            .header-nav-details_wrapper {
+            .header-nav-marsRovers {
                 -webkit-tap-highlight-color: transparent;
                 -webkit-touch-callout: none;
                 -webkit-user-select: none;
@@ -32,7 +26,6 @@
                 border-top: none;
                 border-right: none;
                     
-                
                 > details {
                     border-radius: 5px;
                     
@@ -44,7 +37,34 @@
                 }
 
                 @media (max-width: 700px) {
-                    min-width: fit-contentc;
+                    min-width: fit-content;
+                }
+            }
+
+            .header-nav-earthEyes {
+                -webkit-tap-highlight-color: transparent;
+                -webkit-touch-callout: none;
+                -webkit-user-select: none;
+                -khtml-user-select: none;
+                -moz-user-select: none;
+                -ms-user-select: none;
+                user-select: none;
+                border-radius: 0;
+                border: 2px solid #FCCF31;
+                display: flex;
+                z-index: 10;
+                border-top: none;
+                color: antiquewhite;
+                border-right: none;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                padding: 1rem;
+                    
+
+                @media (max-width: 700px) {
+                    min-width: fit-content;
                 }
             }
             

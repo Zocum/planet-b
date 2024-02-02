@@ -54,7 +54,7 @@ export default function Accordion({ children, summaryRef, contentRef }: Accordio
                 animation.cancel();
             }
 
-            // Start a WAAPI animation
+            // Start animation
             animation = el.animate({
                 // Set the keyframes from the startHeight to endHeight
                 height: [startHeight, endHeight]
